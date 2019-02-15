@@ -181,6 +181,14 @@ FragmentStatePageAdapter不仅会从UI移除掉，并且会从FragmentManager中
 
 * 如何实现
 
+  实现懒加载最主要就是判断Fragment什么时候真正的可见，和不可见，
+
+  - 不可见的好说，setUserVisibleHint回调参数是false的时候就是不可见了
+
+  - 可见的稍微麻烦一点，就是不仅仅靠setUserVisibleHint，还要知道这个时候的View已经创建好了，就是已经走过onCreatedView了，因为这样才能去做初始化，所以这个时候就可以设置一个标志位，这个标志位需要setUserVisibleHint回调true的时候，已经创建过view，和已经创建过view的情况下，回调setUserVisibleHint传true，才能认为是可见，并且ui都创建好了。
+
+    > 可以参考这个 https://www.jianshu.com/p/5c5c778d862e
+
 #### Fragment栈管理
 
 #### Fragment常见问题
