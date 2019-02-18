@@ -1,0 +1,37 @@
+activity生命周期,创建方式:
+
+service生命周期, IntentService
+
+activity的启动模式,启动模式使用场景
+
+Java引用:强,软,弱,虚
+
+viewpage和fragment  有页面缓存，懒加载，如何实现fragment切换过来再获取数据，viewpagerAdapter的方法，如何实现点击事件
+
+数据存储的方式:
+
+mvp和mvc优缺点，区别:
+
+handler机制:
+
+设计模式:
+
+进程，线程通信方式:
+
+常用控件,布局使用:
+recycleview
+constraintlayout
+
+播放器生命周期:
+
+http协议中的内容:
+
+binder机制:
+
+页面卡顿,性能问题解决方案和工具使用:TraceView
+
+tcp 3次握手建立连接,4次挥手释放连接,具体原理:
+
+view滑动冲突解决:
+
+常用框架使用
