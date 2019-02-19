@@ -191,7 +191,74 @@ FragmentStatePageAdapter不仅会从UI移除掉，并且会从FragmentManager中
 
 #### Fragment栈管理
 
+现在很流行把Fragment当成一个页面来用，代替activity，因为加载速度确实要比Activity快一点，很多app都是一个activity+多个fragment的模式。但是fragment的缺陷也很明显，生命周期没有activity那么周全，并且需要自己去管理已经打开的Fragment那些。坑很多，但是已经有人踩过了，大家可以在github上搜这种框架，有很好用的。
+
+现在Studio创建一个工程，你会发现Activity默认继承自AppCompatActivity，这个activity继承自FragmentActivity，就是为了方便管理Fragment，可以直接调用getSupportFragmentManager获取对v4包fragment的管理类——FragmentManager，Fragment的管理都是由它干的，下面具体看一下几种场景的使用。
+
+* 显示一个Fragment
+
+  先看一段代码，最简单的显示一个fragment
+
+  ```java
+    TestFrag frag = new TestFrag();
+    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+    ft.add(R.id.fragment_container, frag, "myFragment");
+    ft.commit();
+  ```
+
+  上面先new一个fragment，通过FragmentManager获取FragmentTransaction，这个类是用来处理Fragment事务的，然后调用它的add方法，将fragment添加到activity，fragment的view添加到R.id.fragment_container中。***每次添加了事务，都必须执行commit，提交一下哦***
+
+  我们看看源码，可以知道，此add方法，是把fragment，作为一个事务，添加到一个事务列表中。
+
+  commit之后，会触发FragmentManager去执行事务列表中的事务，下面是事务的样子
+
+  ```java
+      static final class Op {
+          int cmd;
+          Fragment fragment;
+          int enterAnim;
+          int exitAnim;
+          int popEnterAnim;
+          int popExitAnim;
+  
+          Op() {
+          }
+  
+          Op(int cmd, Fragment fragment) {
+              this.cmd = cmd;
+              this.fragment = fragment;
+          }
+      }
+  ```
+
+  但是如果你用这个方法多了，会发现会出现fragment重叠现象，所以就需要隐藏上一个fragment，调用FragmentTransaction的hide方法即可，至于如何找到上一个Fragment，你可以保存上个Fragment的引用，也可以通过FragmentManager去查找，具体怎么查找我们稍后讲。
+
+  下面我们看一下另外一种显示方式，通过replace的方式去显示一个fragment，顾名思义，replace，就是拿新的fragment替换上一个fragment，两者优缺点和使用场景请大家自行衡量。
+
+  ```java
+  TestFrag frag = new TestFrag();
+  FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+  ft.replace(R.id.fragment_container, frag, "newFragment");
+  ft.commit();
+  ```
+
+* 移除一个Fragment
+
+  调用remove即可，没啥多说的
+
+* 加入栈
+
+  如果你是要显示多个Fragment，就需要以添加的方式显示一个Fragment，并且可以把Fragment加入到栈中，方便管理，执行了add之后，调用一下ft.addToBackStack(null)即可。这样有什么好处呢？当你不需要显示当前fragment的时候，可以直接调用FragmentManager的popBackStack方式，即可将栈顶的fragment移除掉。
+
+* 查找某个Fragment
+
+  add方法和replace方法，都有几个重载。可以添加id或者tag给fragment，这样就可以通过FragmentManager的findFragmentById和findFragmentByTag方法查找fragment了
+
 #### Fragment常见问题
+
+https://blog.csdn.net/qq_20280683/article/details/79669363
+
+https://blog.csdn.net/tangletao/article/details/77713770
 
 
 
