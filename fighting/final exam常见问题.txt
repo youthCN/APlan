@@ -18,9 +18,20 @@ handler机制:
 
 进程，线程通信方式:
 
+进程:
+线程:
+	Lock https://www.cnblogs.com/-new/p/7256297.html
+
+Java生产者消费者模型:
+
+
 常用控件,布局使用:
-recycleview
-constraintlayout
+recycleview:
+
+
+constraintlayout:
+	https://www.jianshu.com/p/a74557359882
+	https://www.jianshu.com/p/17ec9bd6ca8a
 
 播放器生命周期:
 
@@ -34,4 +45,11 @@ tcp 3次握手建立连接,4次挥手释放连接,具体原理:
 
 view滑动冲突解决:
 
-常用框架使用
+常用框架使用:
+okHttp:
+
+
+Java并发----CAS:
+	https://blog.csdn.net/chenssy/article/details/69640293
+
+
