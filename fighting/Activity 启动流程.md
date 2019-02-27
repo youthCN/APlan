@@ -308,7 +308,7 @@ private void handleLaunchActivity(ActivityClientRecord r, Intent customIntent) {
 
 ###### handleResumeActivity();
 
-![1550500116385](D:\Tang\svn\APlan\fighting\images\1550500116385.png)
+![1550500116385](images/1550500116385.png)
 
 至此，Activity启动基本完成。
 
@@ -341,7 +341,7 @@ private final void startProcessLocked(ProcessRecord app, String hostingType,
 ```
 Process大概流程如下图：
 
-![1550501026918](D:\Tang\svn\APlan\fighting\images\1550501026918.png)
+![1550501026918](images/1550501026918.png)
 
 主要是通过Socket进行进程通信传递消息到ZygoteInit，然后由Zygote fork出进程。
 
