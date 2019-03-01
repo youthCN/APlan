@@ -6,7 +6,7 @@
 
 官方定义：
 
-![1551317576985](E:\Tang\0-Android\SVN\素材\markdown\1551317576985.png)
+![1551317576985](images/1551317576985.png)
 
 在Android里面，服务有两种存在的形式
 
@@ -21,7 +21,7 @@
 
 直接上官方的一张图：
 
-![1551318048590](E:\Tang\0-Android\SVN\素材\markdown\1551318048590.png)
+![1551318048590](images/1551318048590.png)
 
 *Tips*
 
@@ -45,11 +45,11 @@
 
 #### bindService() 方法调用链
 
-![1551321670986](E:\Tang\0-Android\SVN\素材\markdown\1551321670986.png)
+![1551321670986](images/1551321670986.png)
 
 #### startService() 方法调用链
 
-![1551321779549](E:\Tang\0-Android\SVN\素材\markdown\1551321779549.png)
+![1551321779549](images/1551321779549.png)
 
 可以看出最终start或者bind的任务都是交到AMS中的ActiveServices执行的，
 
@@ -252,7 +252,7 @@ int bindServiceLocked(IApplicationThread caller, IBinder token, Intent service,
 
 调用setFpreground之后的方法调用链如下：
 
-![1551325864781](E:\Tang\0-Android\SVN\素材\markdown\1551325837150.png)
+![](images/1551325837150.png)
 
 ```java
 final void updateProcessForegroundLocked(ProcessRecord proc, boolean isForeground,
@@ -293,4 +293,4 @@ final void updateProcessForegroundLocked(ProcessRecord proc, boolean isForegroun
 
 ## 进程优先级
 
-![1551326072946](E:\Tang\0-Android\SVN\素材\markdown\1551326072946.png)
+![](images/1551326072946.png)
