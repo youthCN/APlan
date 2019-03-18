@@ -4,6 +4,8 @@ service生命周期, IntentService
 
 activity的启动模式,启动模式使用场景
 
+activity的加载
+
 Java引用:强,软,弱,虚
 
 viewpage和fragment  有页面缓存，懒加载，如何实现fragment切换过来再获取数据，viewpagerAdapter的方法，如何实现点击事件
@@ -51,5 +53,8 @@ okHttp:
 
 Java并发----CAS:
 	https://blog.csdn.net/chenssy/article/details/69640293
+	
+安卓签名：
+
 
 
